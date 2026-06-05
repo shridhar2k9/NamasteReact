@@ -2,8 +2,9 @@
   "name": "namastereact",
   "version": "1.0.0",
   "description": "this is react learning by shridhar",
-  "main": "app.js",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -21,5 +22,9 @@
   "homepage": "https://github.com/shridhar2k9/NamasteReact#readme",
   "devDependencies": {
     "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   }
 }
