@@ -46,3 +46,31 @@
 .res-logo {
     width: 100%;
 }
+
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card {
+    margin: 20px;
+    width: 200px;
+    height: 400px;
+    background-color: #f0f0f0
+}
+
+.login {
+    padding: 0 20px;
+    cursor: pointer;
+    background-color: #defcde;
+}
+
+.filter {
+    display: flex;
+    margin-left: 20px;
+}
+.search{
+    display: flex;
+    justify-content: center;
+    margin: 2px;
+}

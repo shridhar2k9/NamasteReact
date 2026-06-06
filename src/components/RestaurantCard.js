@@ -1,4 +1,4 @@
-import { COM_URL,MENU_URL } from "../utils/constants";
+import { COM_URL } from "../utils/constants";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
@@ -10,21 +10,21 @@ const RestaurantCard = (props) => {
     cuisines,
     costForTwo,
     deliveryTime,
-  } = resData?.data;
-
+  } = resData?.info;
+  const{link}  = resData?.cta;
   return (
     <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
-      {/* <img
+      <img
         className="res-logo"
         alt="res-logo"
         src={
-          MENU_URL +cloudinaryImageId
+          COM_URL+ cloudinaryImageId
         }
-      /> */}
+      />
       <h3>{name}</h3>
       <h4>{cuisines.join(", ")}</h4>
       <h4>{avgRating} stars</h4>
-      <h4>₹{costForTwo / 100} FOR TWO</h4>
+      <h4>{costForTwo}</h4>
       <h4>{deliveryTime} minutes</h4>
     </div>
   );
