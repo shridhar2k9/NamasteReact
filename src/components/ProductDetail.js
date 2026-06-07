@@ -1,13 +1,17 @@
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
 import useProductDetail from "../utils/useProductdetail";
+import useInternetStatus from "../utils/useInternetStatus";
 
 const ProductDetail = () => {
   const { productId } = useParams();
 
   const { product } = useProductDetail(productId);
+  const onlineStatus = useInternetStatus();
 
   if (product === null) return <Shimmer />;
+
+  if(onlineStatus === false) return <h1>🔴 You are offline. Please check your internet connection.</h1>;
 
   return (
     <div className="product-detail">
