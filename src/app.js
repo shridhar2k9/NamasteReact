@@ -1,19 +1,24 @@
-import React from "react";
+import React, {lazy,Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import Header from "./components/Header";
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router";
-import About from "./components/AboutCombined";
-import Contact from "./components/Contact";
 import Error from "./components/Error";
-import ProductDetail from "./components/ProductDetail";
+import Body from "./components/Body";
 import "./App.css";
 
+const About = lazy(()=>import('./components/AboutCombined'));
+const Contact = lazy(()=>import("./components/Contact"));
+const ProductDetail = lazy(()=>import("./components/ProductDetail"));
+
 const AppLayout = () => {
+
   return (
     <div className="app">
       <Header />
+      <Suspense fallback={<h1>Loading...</h1>}>
       <Outlet />
+      </Suspense>
     </div>
   );
 }; 
