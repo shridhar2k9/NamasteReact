@@ -1,3 +1,4 @@
+@import "tailwindcss";
 * {
     margin: 0;
     padding: 0;
@@ -590,4 +591,8 @@ body {
     .final-price {
         font-size: 20px;
     }
+}
+.feature-product > label{
+    border: 2px solid #ff6b35;
+    box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
 }

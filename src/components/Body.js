@@ -1,12 +1,14 @@
 import {useState,useEffect} from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
+import Product from "./Product";
+import FeatureProduct from "./FeatureProduct";
 
 const Body = () => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [searchText, setSearchText] = useState("");
-
+    const FeaturedCategoryCmp = FeatureProduct(Product);
     useEffect(() => {
         fetchData();
         return () => {
@@ -57,18 +59,8 @@ const Body = () => {
        
         <div className="res-container">
             {filteredProducts.map((product) => (
-            <Link to={`/product/${product.id}`} key={product.id} className="product-link">
-                <div className="product-card">
-                    <img src={product.thumbnail} alt={product.title} />
-                    <h3>{product.title}</h3>
-                    <p><strong>Price:</strong> ${product.price}</p>
-                    <p><strong>Rating:</strong> {product.rating} ⭐</p>
-                    <p><strong>Discount:</strong> {product.discountPercentage}%</p>
-                    <p><strong>Stock:</strong> {product.stock}</p>
-                    <p className="description">{product.description}</p>
-                </div>
-            </Link>
-            ))}
+                product.category === "beauty" ? (<FeaturedCategoryCmp key={product.id} product={product}/>) : (<Product key={product.id} product={product} />)
+            ))} 
         </div>
         </div>
     );
