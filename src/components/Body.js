@@ -9,6 +9,10 @@ const Body = () => {
 
     useEffect(() => {
         fetchData();
+        return () => {
+            // we can cleanup any side effects here like clearing timers, cancelling API calls, removing event listeners etc
+            console.log("Body component unmounted cleanup function called once component is unmounted");
+        };
     },[]);
 
     const fetchData = async () => {

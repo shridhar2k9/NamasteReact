@@ -46,3 +46,10 @@ export const Component; import {Component} from "path";
 
  - useState() - Superpowerful State Variables in react
  - useEffect()
+# - Class parent- child - flow
+    Parent constructor
+    Parent render
+    child constructor
+    child render
+    child componentDidMount
+     Parent componentDidMount

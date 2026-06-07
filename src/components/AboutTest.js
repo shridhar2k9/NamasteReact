@@ -1,18 +1,18 @@
 import React from "react";
-class AboutClassChild extends React.Component{
+class AboutTestClassChild extends React.Component{
   constructor(props){
       super(props);
       this.state = {
         count: 0,
         count2:2
       }
-      console.log("child1 constructor");
+      console.log("Test child constructor");
   }
   componentDidMount(){
-    console.log(this.props.name+"child componentDidMount");
+    console.log(this.props.name+"Test child componentDidMount");
   }
   render(){
-    console.log("child1 child render");
+    console.log("Test child render");
     const {name, age} = this.props;
     const {count, count2} = this.state;
     return (
@@ -28,4 +28,4 @@ class AboutClassChild extends React.Component{
 }
 
 
-export default AboutClassChild;
+export default AboutTestClassChild;

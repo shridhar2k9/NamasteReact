@@ -3,10 +3,9 @@ import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import Header from "./components/Header";
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router";
-import About from "./components/About";
+import About from "./components/AboutCombined";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import Body from "./components/Body";
 import ProductDetail from "./components/ProductDetail";
 import "./App.css";
 
