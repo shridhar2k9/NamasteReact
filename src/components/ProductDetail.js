@@ -2,12 +2,34 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
 import useProductDetail from "../utils/useProductdetail";
 import useInternetStatus from "../utils/useInternetStatus";
+import { useState, useEffect } from "react";
+import CategoryList from "./CategoryList";
 
 const ProductDetail = () => {
   const { productId } = useParams();
 
   const { product } = useProductDetail(productId);
   const onlineStatus = useInternetStatus();
+
+  const [categoryList, setCategoryList] = useState([]);
+
+  useEffect(() => {
+    fetchCategoryList();
+  }, []);
+
+  const fetchCategoryList = async () => {
+    try {
+      const response = await fetch('https://dummyjson.com/products/category-list');
+      const data = await response.json();
+      setCategoryList(data);
+    } catch (error) {
+      console.error('Error fetching category list:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategoryList();
+  }, []);
 
   if (product === null) return <Shimmer />;
 
@@ -95,6 +117,9 @@ const ProductDetail = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className="reviews-section">
+        <CategoryList categories={categoryList} />
       </div>
     </div>
   );
