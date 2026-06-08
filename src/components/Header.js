@@ -1,12 +1,12 @@
 import { LOGO_URL } from "../utils/constants";
-import {useState} from "react";
+import {useState,useContext} from "react";
 import { Link } from "react-router";
 import useInternetStatus from "../utils/useInternetStatus";
-
+import userContext from '../utils/userContext'
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const onlineStatus = useInternetStatus();
-
+  const {loggedInUser} = useContext(userContext)
   return (
     <div className="header">
       <div className="logo-container">
@@ -24,6 +24,7 @@ const Header = () => {
           <button onClick={() => setIsLoggedIn(!isLoggedIn)} className="login">
             {isLoggedIn ? "Logout" : "Login"}
           </button>
+          <li>{loggedInUser}</li>
         </ul>
       </div>
     </div>

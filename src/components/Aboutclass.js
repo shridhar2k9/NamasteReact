@@ -1,7 +1,7 @@
 import React from "react";
 import AboutClassChild from "./About"
 import AboutTestClassChild from "./AboutTest";
-
+import userContext from '../utils/userContext'
 class AboutClass extends React.Component{
     constructor(props){
         super(props);
@@ -56,7 +56,12 @@ console.log("Parent constructor");
                     <p>Maiden Name: {maidenName}</p>
                     <p>Gender: {gender}</p>
                     <p>Email: {email}</p>
-                    <p>Phone: {phone}</p>   
+                    <p>Phone: {phone}</p>
+                    <userContext.Consumer>
+                        {
+                            ({loggedInUser})=>{{<h1>{loggedInUser}</h1>}}
+                        }
+                    </userContext.Consumer>   
                     </div>
                 </div>
             </div>

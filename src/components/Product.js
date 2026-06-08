@@ -1,8 +1,10 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect,useContext} from "react";
 import { Link } from "react-router";
+import userContext from '../utils/userContext'
 
 const Product = (props) => {
     const { product } = props;
+    const {loggedInUser} = useContext(userContext)
     return (
      <Link to={`/product/${product.id}`} className="product-link">
                 <div className="product-card">
@@ -13,6 +15,7 @@ const Product = (props) => {
                     <p><strong>Discount:</strong> {product.discountPercentage}%</p>
                     <p><strong>Stock:</strong> {product.stock}</p>
                     <p className="description">{product.description}</p>
+                    <h2><p>Name : {loggedInUser}</p></h2>
                 </div>
     </Link>
     );

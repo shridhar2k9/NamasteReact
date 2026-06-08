@@ -1,14 +1,17 @@
-import {useState,useEffect} from "react";
+import {useState,useEffect, useContext} from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import Product from "./Product";
 import FeatureProduct from "./FeatureProduct";
+import userContext from '../utils/userContext'
 
 const Body = () => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [searchText, setSearchText] = useState("");
     const FeaturedCategoryCmp = FeatureProduct(Product);
+    const {loggedInUser,setLoggedUser} = useContext(userContext)
+
     useEffect(() => {
         fetchData();
         return () => {
@@ -52,6 +55,11 @@ const Body = () => {
             value={searchText} 
             onChange={(e) => setSearchText(e.target.value)} />
             <button className="search-btn" onClick={searchProducts}>Search</button>
+
+             <input type="text" className="search-box" placeholder="Type user Name" 
+            value={loggedInUser} 
+            onChange={(e) => setLoggedUser(e.target.value)} />
+
              <div className="filter">
             <button className="filter-btn" onClick={filterHighRatedProducts}>High Rated Products (4+)</button>
         </div>
