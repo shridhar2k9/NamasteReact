@@ -4,6 +4,8 @@ import useProductDetail from "../utils/useProductdetail";
 import useInternetStatus from "../utils/useInternetStatus";
 import { useState, useEffect } from "react";
 import CategoryList from "./CategoryList";
+import { useDispatch } from "react-redux";
+import { addCart } from "../utils/Store/CartSlice";
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -12,6 +14,7 @@ const ProductDetail = () => {
   const onlineStatus = useInternetStatus();
 
   const [categoryList, setCategoryList] = useState([]);
+  const addDispatch = useDispatch();
 
   useEffect(() => {
     fetchCategoryList();
@@ -30,6 +33,10 @@ const ProductDetail = () => {
   useEffect(() => {
     fetchCategoryList();
   }, []);
+
+  const addTOCart = ()=>{
+    addDispatch(addCart(product))
+  }
 
   if (product === null) return <Shimmer />;
 
@@ -98,7 +105,7 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          <button className="add-to-cart-btn">Add to Cart</button>
+          <button className="add-to-cart-btn" onClick={()=>addTOCart()}>Add to Cart</button>
         </div>
       </div>
 

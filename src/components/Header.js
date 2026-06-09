@@ -3,10 +3,19 @@ import {useState,useContext} from "react";
 import { Link } from "react-router";
 import useInternetStatus from "../utils/useInternetStatus";
 import userContext from '../utils/userContext'
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart } from "../utils/Store/CartSlice";
+
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const onlineStatus = useInternetStatus();
-  const {loggedInUser} = useContext(userContext)
+  const {loggedInUser} = useContext(userContext);
+  const cartItems = useSelector((store)=>store.cart.item)
+  const clearCartDispatch = useDispatch()
+
+  const handleRemoveCart = () =>{
+    clearCartDispatch(clearCart())
+  }
   return (
     <div className="header">
       <div className="logo-container">
@@ -25,10 +34,12 @@ const Header = () => {
             {isLoggedIn ? "Logout" : "Login"}
           </button>
           <li>{loggedInUser}</li>
+          <li><Link to="/cart"><button>Cart&nbsp;{cartItems.length}</button></Link>
+          <div><button onClick={()=>handleRemoveCart()}>Clear Cart</button></div></li>
         </ul>
       </div>
     </div>
-  ); 3
+  );
 };
 
 export default Header;
